@@ -10,22 +10,22 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Onest:wght@500;600;700;800;900&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="style.css?v=2"><script src="app.js?v=2" defer></script>
 </head>
 <body>
   <header class="header container">
     <a class="brand" href="#top" aria-label="Строй Клининг — на главную"><span class="brand-mark" aria-hidden="true">С<span>К</span></span><span>СТРОЙ<br>КЛИНИНГ</span></a>
-    <nav aria-label="Основная навигация"><a href="#services">Услуги</a><a href="#process">Как обратиться</a><a href="#contacts">Контакты</a></nav>
+    <nav aria-label="Основная навигация"><a href="#services">Услуги</a><a href="#process">План уборки</a><a href="#contacts">Контакты</a></nav>
     <a class="header-phone" href="tel:+79872940909">+7 987 294-09-09</a>
     <a class="button header-button" href="tel:+79872940909">Позвонить <span aria-hidden="true">↗</span></a>
   </header>
   <main id="top">
     <section class="hero container">
       <div class="hero-copy">
-        <p class="hero-location"><span aria-hidden="true"></span> Казань · уборка помещений</p>
-        <h1>После ремонта.<br><span>Перед жизнью.</span></h1>
-        <p>Уборка после строительства и ремонта, клининг офисов, мойка окон и химчистка. Обсудите с нами вашу задачу.</p>
-        <div class="hero-actions"><a class="button primary" href="tel:+79872940909">Обсудить уборку <span aria-hidden="true">↗</span></a><a class="text-link" href="#services">Посмотреть услуги <span aria-hidden="true">↓</span></a></div>
+        <p class="hero-location"><span aria-hidden="true"></span> Казань</p>
+        <h1>Уборка после<br>ремонта</h1>
+        <p>Отметьте, где осталась строительная пыль и какие зоны нужно убрать. По этому плану будет проще обсудить объём работ.</p>
+        <div class="hero-actions"><a class="button primary" href="#process">Составить план уборки <span aria-hidden="true">↗</span></a><a class="text-link" href="#services">Посмотреть услуги <span aria-hidden="true">↓</span></a></div>
       </div>
       <figure class="hero-image"><img src="assets/interior.webp" alt="Иллюстрация: чистое помещение и уборочная техника" fetchpriority="high"></figure>
       <div class="hero-ribbon"><span>Квартиры и дома</span><span>Офисы и помещения</span><span>После ремонта</span></div>
@@ -41,7 +41,34 @@
       </div>
       <p class="source-note">Услуги перечислены по <a href="https://yandex.com/maps/org/stroy_cleaning/68083999295/prices/" target="_blank" rel="noopener noreferrer">карточке компании</a>; актуальный перечень уточняйте при обращении.</p>
     </section>
-    <section class="process" id="process"><div class="container process-grid"><div><p class="label">Поговорим о задаче</p><h2>Сначала детали.<br><span>Потом чистота.</span></h2><p>Расскажите, какое помещение или изделие нужно почистить. При обращении можно уточнить объём работ, удобное время и стоимость.</p><a class="button light" href="tel:+79872940909">Позвонить <span aria-hidden="true">↗</span></a></div><div class="process-checklist"><p>Для разговора пригодится</p><div><span>01</span><strong>Тип помещения</strong><small>Квартира, офис или другой объект</small></div><div><span>02</span><strong>Что нужно сделать</strong><small>После ремонта, окна или мебель</small></div><div><span>03</span><strong>Размер и детали</strong><small>Площадь и особенности задачи</small></div></div></div></section>
+    <section class="process" id="process" aria-labelledby="plan-title">
+  <div class="container process-grid">
+    <div class="plan-intro">
+      <h2 id="plan-title">Карта уборки</h2>
+      <p>Отметьте, какие зоны нужно убрать после ремонта. План можно скопировать или использовать как подсказку при звонке.</p>
+      <a class="button light" href="tel:+79872940909">Обсудить план по телефону <span aria-hidden="true">↗</span></a>
+    </div>
+    <div class="plan-sheet">
+      <div class="premises">
+        <label>Помещение <select id="premise"><option>Квартира</option><option>Дом</option><option>Офис</option><option>Другое помещение</option></select></label>
+        <label>Площадь, м² <input id="area" type="number" min="1" max="99999" inputmode="numeric" placeholder="Необязательно"></label>
+      </div>
+      <fieldset class="floor-plan">
+        <legend>Зоны уборки</legend>
+        <label><input type="checkbox" value="Пол и плинтусы"><span>Пол и плинтусы</span></label>
+        <label><input type="checkbox" value="Окна и рамы"><span>Окна и рамы</span></label>
+        <label><input type="checkbox" value="Двери и проёмы"><span>Двери и проёмы</span></label>
+        <label><input type="checkbox" value="Сантехника"><span>Сантехника</span></label>
+      </fieldset>
+      <p class="plan-count" id="zone-count" aria-live="polite">Отмечено: 0 из 4</p>
+      <div class="plan-actions">
+        <button class="button primary" type="button" id="copy-plan" disabled>Скопировать план</button>
+        <p id="plan-feedback" role="status"></p>
+      </div>
+      <textarea id="plan-result" rows="4" readonly hidden aria-label="План уборки"></textarea>
+    </div>
+  </div>
+</section>
     <section class="contact container" id="contacts"><div><p class="label">На связи в Казани</p><h2>Наведём<br><span>порядок?</span></h2></div><div><p>Обсудите задачу, подходящие услуги и стоимость со «Строй Клининг».</p><a class="contact-phone" href="tel:+79872940909">+7 987 294-09-09 <span aria-hidden="true">↗</span></a><p class="address">По карточке: Казань, проспект Победы, 206. Адрес уточняйте при обращении.</p><a class="text-link" href="https://yandex.com/maps/org/stroy_klining/68083999295/" target="_blank" rel="noopener noreferrer">Карточка на Яндекс Картах ↗</a></div></section>
   </main>
   <footer class="container footer"><span>Строй Клининг · Казань</span><span>Концепция сайта · изображение создано для концепции</span><a href="#top">Наверх ↑</a></footer>

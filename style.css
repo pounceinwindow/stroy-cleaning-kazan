@@ -4,3 +4,69 @@
 @media(max-width:680px){.container{width:calc(100% - 12%)}.header{height:76px;gap:12px}.header nav{display:none}.brand{font-size:13px}.brand-mark{width:40px;height:40px}.header-button{min-height:44px;font-size:12px;padding:10px 14px;gap:12px}.hero{display:flex;flex-direction:column;gap:0;padding-top:0;align-items:stretch}.hero-copy{padding:55px 0 32px}.hero h1{font-size:clamp(41px,10vw,58px)}.hero-copy>p:not(.hero-location){font-size:15px}.hero-actions{gap:20px}.hero-image{height:360px}.hero-ribbon{gap:10px;flex-wrap:wrap;font-size:11px;line-height:1.6}.hero-ribbon span+span::before{padding-right:10px}.services{padding-block:75px}.services-heading{display:block;margin-bottom:28px}.services-heading>p{margin-top:20px}.services-grid{gap:10px}.service{padding:20px 17px;min-height:200px}.service-major{display:block}.service h3{font-size:17px}.service p{font-size:13px}.process-grid{display:block;padding-block:75px}.process-grid>div:first-child>p:not(.label){font-size:15px}.process-checklist{margin-top:40px}.contact{display:block;padding-block:75px}.contact>div:last-child{margin-top:30px}.footer{flex-wrap:wrap}.footer span:nth-child(2){order:3;flex-basis:100%}}
 @media(max-width:350px){.header{gap:8px}.brand{font-size:12px}.header-button{padding-inline:10px;gap:8px}.hero h1{font-size:38px}.service h3{font-size:15px}.service{padding-inline:13px}.contact-phone{font-size:20px}}
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*:before,*:after{animation-duration:.01ms!important;transition-duration:.01ms!important}}
+
+/* Room plan */
+.hero h1 { font-size: clamp(44px, 4.75vw, 70px); line-height: 1.01; }
+.hero-copy { padding-block: 38px; }
+.hero-image { height: clamp(415px, 37vw, 530px); }
+.hero .primary, .plan-actions .primary { transition: background-color 160ms ease-out, transform 140ms ease-out; }
+.hero .primary:active, .plan-actions .primary:active { transform: scale(.97); }
+.process-grid { grid-template-columns: minmax(0, .8fr) minmax(0, 1.2fr); gap: clamp(30px, 7vw, 90px); align-items: start; }
+.plan-intro { align-self: center; }
+.plan-sheet {
+  color: var(--ink);
+  background: #f1f7ff;
+  padding: clamp(16px, 3vw, 32px);
+  border: 1px solid #b7c9df;
+  box-shadow: 7px 7px 0 #486388;
+}
+.premises { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
+.premises label { font-size: 13px; font-weight: 800; }
+.premises input, .premises select, #plan-result { display: block; width: 100%; margin-top: 6px; padding: 10px; border: 1px solid #879ebd; color: var(--ink); background: #fff; border-radius: 4px; font: inherit; }
+.premises input, .premises select { min-height: 44px; }
+.floor-plan { border: 0; margin: 22px 0 0; padding: 0; min-width: 0; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 4px; }
+.floor-plan legend { margin-bottom: 10px; font-weight: 800; }
+.floor-plan label { position: relative; cursor: pointer; }
+.floor-plan input { position: absolute; opacity: 0; }
+.floor-plan label span {
+  position: relative;
+  display: flex;
+  min-height: 68px;
+  align-items: center;
+  padding: 13px 12px 13px 33px;
+  border: 1px solid #7b9dc8;
+  background: #dceaff;
+  font-size: 13px;
+  font-weight: 800;
+  transition: background-color 180ms ease-out, color 180ms ease-out;
+}
+.floor-plan label span::before {
+  content: '';
+  position: absolute;
+  width: 13px;
+  height: 13px;
+  left: 10px;
+  border: 1px solid currentColor;
+  border-radius: 2px;
+}
+.floor-plan input:checked + span { background: var(--blue); color: #fff; }
+.floor-plan input:checked + span::before { background: #ffab87; border-color: #ffab87; }
+.floor-plan input:focus-visible + span, .plan-sheet :is(button, input, select, textarea):focus-visible { outline: 3px solid #a84118; outline-offset: 3px; }
+.plan-count { font-size: 13px; margin: 11px 0 16px; font-weight: 800; }
+.plan-actions { display: flex; flex-wrap: wrap; align-items: center; gap: 7px 13px; }
+.plan-actions button { border: 0; min-height: 48px; font-family: inherit; cursor: pointer; }
+.plan-actions button:disabled { opacity: .63; cursor: default; transform: none; }
+#plan-feedback { margin: 0; font-size: 13px; }
+#plan-result { resize: vertical; }
+#plan-result[hidden] { display: none; }
+@media (max-width: 680px) {
+  .hero-copy { padding-block: 34px 30px; }
+  .hero h1 { font-size: clamp(37px, 9.7vw, 63px); }
+  .hero-image { height: clamp(245px, 72vw, 360px); }
+  .hero-ribbon { margin-top: 10px; }
+  .plan-sheet { margin-top: 26px; }
+}
+@media (max-width: 365px) {
+  .premises { grid-template-columns: 1fr; }
+  .floor-plan label span { font-size: 12px; padding-right: 5px; }
+}
